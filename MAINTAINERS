@@ -685,6 +685,17 @@ L:	alsa-devel@alsa-project.org (moderated for non-subscribers)
 W:	http://blackfin.uclinux.org/
 S:	Supported
 F:	sound/soc/blackfin/*
+ 
+ANALOG DEVICES INC IIO DRIVERS
+M:	Lars-Peter Clausen <lars@metafoo.de>
+M:	Michael Hennerich <Michael.Hennerich@analog.com>
+W:	http://wiki.analog.com/
+W:	http://ez.analog.com/community/linux-device-drivers
+S:	Supported
+F:	drivers/iio/*/ad*
+X:	drivers/iio/*/adjd*
+F:	drivers/staging/iio/*/ad*
+F:	staging/iio/trigger/iio-trig-bfin-timer.c
 
 AOA (Apple Onboard Audio) ALSA DRIVER
 M:	Johannes Berg <johannes@sipsolutions.net>
@@ -1025,24 +1036,20 @@ F:	arch/arm/mach-pxa/colibri-pxa270-income.c
 
 ARM/INTEL IOP32X ARM ARCHITECTURE
 M:	Lennert Buytenhek <kernel@wantstofly.org>
-M:	Dan Williams <dan.j.williams@intel.com>
 L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
 S:	Maintained
 
 ARM/INTEL IOP33X ARM ARCHITECTURE
-M:	Dan Williams <dan.j.williams@intel.com>
 L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
-S:	Maintained
+S:	Orphan
 
 ARM/INTEL IOP13XX ARM ARCHITECTURE
 M:	Lennert Buytenhek <kernel@wantstofly.org>
-M:	Dan Williams <dan.j.williams@intel.com>
 L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
 S:	Maintained
 
 ARM/INTEL IQ81342EX MACHINE SUPPORT
 M:	Lennert Buytenhek <kernel@wantstofly.org>
-M:	Dan Williams <dan.j.williams@intel.com>
 L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
 S:	Maintained
 
@@ -1067,7 +1074,6 @@ F:	drivers/pcmcia/pxa2xx_stargate2.c
 
 ARM/INTEL XSC3 (MANZANO) ARM CORE
 M:	Lennert Buytenhek <kernel@wantstofly.org>
-M:	Dan Williams <dan.j.williams@intel.com>
 L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
 S:	Maintained
 
@@ -1392,12 +1398,17 @@ S:	Maintained
 F:	arch/arm/mach-sti/
 F:	arch/arm/boot/dts/sti*
 F:	drivers/clocksource/arm_global_timer.c
-F:	drivers/reset/sti/
-F:	drivers/pinctrl/pinctrl-st.c
-F:	drivers/media/rc/st_rc.c
 F:	drivers/i2c/busses/i2c-st.c
-F:	drivers/tty/serial/st-asc.c
+F:	drivers/media/rc/st_rc.c
 F:	drivers/mmc/host/sdhci-st.c
+F:	drivers/phy/phy-stih407-usb.c
+F:	drivers/phy/phy-stih41x-usb.c
+F:	drivers/pinctrl/pinctrl-st.c
+F:	drivers/reset/sti/
+F:	drivers/tty/serial/st-asc.c
+F:	drivers/usb/dwc3/dwc3-st.c
+F:	drivers/usb/host/ehci-st.c
+F:	drivers/usb/host/ohci-st.c
 
 ARM/TECHNOLOGIC SYSTEMS TS7250 MACHINE SUPPORT
 M:	Lennert Buytenhek <kernel@wantstofly.org>
@@ -1562,9 +1573,9 @@ F:	drivers/platform/x86/asus*.c
 F:	drivers/platform/x86/eeepc*.c
 
 ASYNCHRONOUS TRANSFERS/TRANSFORMS (IOAT) API
-M:	Dan Williams <dan.j.williams@intel.com>
+R:	Dan Williams <dan.j.williams@intel.com>
 W:	http://sourceforge.net/projects/xscaleiop
-S:	Maintained
+S:	Odd fixes
 F:	Documentation/crypto/async-tx-api.txt
 F:	crypto/async_tx/
 F:	drivers/dma/
@@ -2854,6 +2865,7 @@ F:	drivers/platform/x86/dell-wmi.c
 DESIGNWARE USB2 DRD IP DRIVER
 M:	Paul Zimmerman <paulz@synopsys.com>
 L:	linux-usb@vger.kernel.org
+T:	git git://git.kernel.org/pub/scm/linux/kernel/git/balbi/usb.git
 S:	Maintained
 F:	drivers/usb/dwc2/
 
@@ -2864,6 +2876,13 @@ L:	linux-omap@vger.kernel.org
 T:	git git://git.kernel.org/pub/scm/linux/kernel/git/balbi/usb.git
 S:	Maintained
 F:	drivers/usb/dwc3/
+
+DEVICE COREDUMP (DEV_COREDUMP)
+M:	Johannes Berg <johannes@sipsolutions.net>
+L:	linux-kernel@vger.kernel.org
+S:	Maintained
+F:	drivers/base/devcoredump.c
+F:	include/linux/devcoredump.h
 
 DEVICE FREQUENCY (DEVFREQ)
 M:	MyungJoo Ham <myungjoo.ham@samsung.com>
@@ -2995,13 +3014,11 @@ T:	git git://git.linaro.org/people/sumitsemwal/linux-dma-buf.git
 
 DMA GENERIC OFFLOAD ENGINE SUBSYSTEM
 M:	Vinod Koul <vinod.koul@intel.com>
-M:	Dan Williams <dan.j.williams@intel.com>
 L:	dmaengine@vger.kernel.org
 Q:	https://patchwork.kernel.org/project/linux-dmaengine/list/
-S:	Supported
+S:	Maintained
 F:	drivers/dma/
 F:	include/linux/dma*
-T:	git git://git.kernel.org/pub/scm/linux/kernel/git/djbw/async_tx.git
 T:	git git://git.infradead.org/users/vkoul/slave-dma.git (slave-dma)
 
 DME1737 HARDWARE MONITOR DRIVER
@@ -3025,6 +3042,7 @@ F:	Documentation/
 X:	Documentation/ABI/
 X:	Documentation/devicetree/
 X:	Documentation/[a-z][a-z]_[A-Z][A-Z]/
+T:	git git://git.kernel.org/pub/scm/linux/kernel/git/jikos/doc.git
 
 DOUBLETALK DRIVER
 M:	"James R. Van Zandt" <jrv@vanzandt.mv.com>
@@ -4617,6 +4635,9 @@ F:	drivers/media/rc/iguanair.c
 
 IIO SUBSYSTEM AND DRIVERS
 M:	Jonathan Cameron <jic23@kernel.org>
+R:	Hartmut Knaack <knaack.h@gmx.de>
+R:	Lars-Peter Clausen <lars@metafoo.de>
+R:	Peter Meerwald <pmeerw@pmeerw.net>
 L:	linux-iio@vger.kernel.org
 S:	Maintained
 F:	drivers/iio/
@@ -4754,8 +4775,8 @@ F:	arch/x86/kernel/cpu/microcode/core*
 F:	arch/x86/kernel/cpu/microcode/intel*
 
 INTEL I/OAT DMA DRIVER
-M:	Dan Williams <dan.j.williams@intel.com>
 M:	Dave Jiang <dave.jiang@intel.com>
+R:	Dan Williams <dan.j.williams@intel.com>
 L:	dmaengine@vger.kernel.org
 Q:	https://patchwork.kernel.org/project/linux-dmaengine/list/
 S:	Supported
@@ -4770,7 +4791,7 @@ F:	drivers/iommu/intel-iommu.c
 F:	include/linux/intel-iommu.h
 
 INTEL IOP-ADMA DMA DRIVER
-M:	Dan Williams <dan.j.williams@intel.com>
+R:	Dan Williams <dan.j.williams@intel.com>
 S:	Odd fixes
 F:	drivers/dma/iop-adma.c
 
@@ -7602,6 +7623,7 @@ F:	fs/reiserfs/
 
 REGISTER MAP ABSTRACTION
 M:	Mark Brown <broonie@kernel.org>
+L:	linux-kernel@vger.kernel.org
 T:	git git://git.kernel.org/pub/scm/linux/kernel/git/broonie/regmap.git
 S:	Supported
 F:	drivers/base/regmap/
@@ -8721,6 +8743,14 @@ W:	http://www.lirc.org/
 S:	Odd Fixes
 F:	drivers/staging/media/lirc/
 
+STAGING - LUSTRE PARALLEL FILESYSTEM
+M:	Oleg Drokin <oleg.drokin@intel.com>
+M:	Andreas Dilger <andreas.dilger@intel.com>
+L:	HPDD-discuss@lists.01.org (moderated for non-subscribers)
+W:	http://lustre.opensfs.org/
+S:	Maintained
+F:	drivers/staging/lustre
+
 STAGING - NVIDIA COMPLIANT EMBEDDED CONTROLLER INTERFACE (nvec)
 M:	Julian Andres Klode <jak@jak-linux.org>
 M:	Marc Dietrich <marvin24@gmx.de>
@@ -9687,7 +9717,7 @@ USB WEBCAM GADGET
 M:	Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 L:	linux-usb@vger.kernel.org
 S:	Maintained
-F:	drivers/usb/gadget/function/*uvc*.c
+F:	drivers/usb/gadget/function/*uvc*
 F:	drivers/usb/gadget/legacy/webcam.c
 
 USB WIRELESS RNDIS DRIVER (rndis_wlan)
@@ -9901,6 +9931,7 @@ F:	drivers/scsi/vmw_pvscsi.h
 VOLTAGE AND CURRENT REGULATOR FRAMEWORK
 M:	Liam Girdwood <lgirdwood@gmail.com>
 M:	Mark Brown <broonie@kernel.org>
+L:	linux-kernel@vger.kernel.org
 W:	http://opensource.wolfsonmicro.com/node/15
 W:	http://www.slimlogic.co.uk/?p=48
 T:	git git://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git
@@ -10193,6 +10224,12 @@ M:	Peter Korsgaard <jacmet@sunsite.dk>
 L:	linux-serial@vger.kernel.org
 S:	Maintained
 F:	drivers/tty/serial/uartlite.c
+
+XILLYBUS DRIVER
+M:	Eli Billauer <eli.billauer@gmail.com>
+L:	linux-kernel@vger.kernel.org
+S:	Supported
+F:	drivers/char/xillybus/
 
 XTENSA XTFPGA PLATFORM SUPPORT
 M:	Max Filippov <jcmvbkbc@gmail.com>
